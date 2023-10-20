@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "8414676023",
+    "project_id": "cotizaciones-hdg",
+    "storage_bucket": "cotizaciones-hdg.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:8414676023:android:b0bceb14f3d176efdaebb2",
+        "android_client_info": {
+          "package_name": "com.example.anterior_cotizaciones"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAi3z1IjeSSps3tI3ug-OpXjh398-hVeks"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
