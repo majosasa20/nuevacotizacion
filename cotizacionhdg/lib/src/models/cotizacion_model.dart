@@ -9,6 +9,7 @@ String cotizacionToJson(Cotizacion data) => json.encode(data.toJson());
 class Cotizacion {
   int? id_cotizacion;
   int? cod_empresa;
+  String? nombre_empresa;
   String? destino;
   String? observaciones;
   int? id_usuario;
@@ -29,6 +30,7 @@ class Cotizacion {
   Cotizacion(
       {this.id_cotizacion,
         this.cod_empresa,
+        this.nombre_empresa,
       this.destino,
       this.observaciones,
       this.id_usuario,
@@ -51,6 +53,7 @@ class Cotizacion {
   factory Cotizacion.fromJson(Map<String, dynamic> json) => Cotizacion(
       id_cotizacion: json["id_cotizacion"],
       cod_empresa: json["cod_empresa"],
+      nombre_empresa: json["nombre_empresa"],
       destino: json["destino"],
       observaciones: json["observaciones"],
       id_usuario: json["id_usuario"],
@@ -75,6 +78,7 @@ class Cotizacion {
     return {
       'id_cotizacion': id_cotizacion,
       'cod_empresa': cod_empresa,
+      "nombre_empresa": nombre_empresa,
       'destino': destino,
       'observaciones': observaciones,
       'id_usuario': id_usuario,

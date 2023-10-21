@@ -386,7 +386,7 @@ class _CrearServicioPageState extends State<CrearServicioPage> {
           image: DecorationImage(
             image: _con.imageFile != null
                 ? FileImage(_con.imageFile!) // Cuando imageFile no es nulo
-                : Image.asset('assets/img/subirImagen.jpg').image,
+                : Image.asset('assets/img/subirImagen.png').image,
             fit: BoxFit.fill
           ),
           boxShadow: [

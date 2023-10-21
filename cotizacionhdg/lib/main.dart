@@ -1,11 +1,14 @@
 import 'package:cotizaciones_hdg/src/pages/administrar_cotizaciones/admin_cotizacionesEmpresa.dart';
+import 'package:cotizaciones_hdg/src/pages/administrar_cotizaciones/cotizaciones_clientes/cotizaciones_clientes.dart';
+import 'package:cotizaciones_hdg/src/pages/administrar_cotizaciones/cotizaciones_clientes/verCotizacion_cliente.dart';
 import 'package:cotizaciones_hdg/src/pages/administrar_cotizaciones/ver_cotizaciondetalle.dart';
 import 'package:cotizaciones_hdg/src/pages/administrar_usuarios/admin_usuariosEmpresa.dart';
 import 'package:cotizaciones_hdg/src/pages/administrar_usuarios/crear_usuario.dart';
 import 'package:cotizaciones_hdg/src/pages/administrar_usuarios/ver_detalleUsuario.dart';
 import 'package:cotizaciones_hdg/src/pages/bienvenido/adminpage.dart';
-import 'package:cotizaciones_hdg/src/pages/bienvenido/menuadministrador.dart';
+import 'package:cotizaciones_hdg/src/pages/bienvenido/menu_clientepage.dart';
 import 'package:cotizaciones_hdg/src/pages/bienvenido/cliente.dart';
+import 'package:cotizaciones_hdg/src/pages/bienvenido/menuadministrador.dart';
 import 'package:cotizaciones_hdg/src/pages/bienvenido/menuvendedor.dart';
 import 'package:cotizaciones_hdg/src/pages/bienvenido/vendedorpage.dart';
 import 'package:cotizaciones_hdg/src/pages/catalogos/caracteristicas/administrar_caracteristicas.dart';
@@ -45,7 +48,8 @@ class _MyAppState extends State<MyApp> {
       routes: {
         'login' : (BuildContext context) => LoginPage(),
         'registro' : (BuildContext context) => RegistroPage(),
-        'clientepage' : (BuildContext context) => ClientePage(),
+        'menuclientepage' : (BuildContext context) => MenuClientePage(),
+        'clientepage': (BuildContext context) => ClientePage(),
         'inicioadminpage': (BuildContext context) => InicioAdminPage(),
         'iniciovendedorpage': (BuildContext context) => InicioVendedorPage(),
         'menuadministradorpage' : (BuildContext context) => AdministradorPage(),
@@ -65,7 +69,9 @@ class _MyAppState extends State<MyApp> {
         'verdetalleUsuario': (BuildContext context) => VerDetalleUsuario(),
         'adminCotizaciones': (BuildContext context) => AdminCotizaciones(),
         'verdetalleCotizacion': (BuildContext context) => VerCotizacionDetallePage(),
-        'roles': (BuildContext context) => RolesPage()
+        'roles': (BuildContext context) => RolesPage(),
+        'cotizacionesClientes': (BuildContext context) => CotizacionesClientes(),
+        'verCotizacionCliente' : (BuildContext context) => VerCotizacionCliente()
       },
       theme: ThemeData(
           colorScheme: ColorScheme.light(primary: MyColors.primaryColor)

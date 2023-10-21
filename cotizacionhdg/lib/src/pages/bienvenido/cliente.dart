@@ -1,10 +1,7 @@
 import 'package:cotizaciones_hdg/src/models/empresas_model.dart';
-// import 'package:cotizaciones_hdg/src/models/roles.dart';
-// import 'package:cotizaciones_hdg/src/models/usuario.dart';
 import 'package:cotizaciones_hdg/src/pages/bienvenido/cliente_controller.dart';
 import 'package:cotizaciones_hdg/src/styles/estilos.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 
 
 class ClientePage extends StatefulWidget {

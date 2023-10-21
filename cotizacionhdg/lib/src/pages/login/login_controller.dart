@@ -102,7 +102,7 @@ class LoginController {
           Navigator.pushNamedAndRemoveUntil(context!, 'iniciovendedorpage', (route) => false);
         }
         else {
-          Navigator.pushNamedAndRemoveUntil(context!, 'clientepage', (route) => false);
+          Navigator.pushNamedAndRemoveUntil(context!, 'menuclientepage', (route) => false);
         }
         // Navigator.pushNamedAndRemoveUntil(context!, 'adminpage', (route) => false);
       }

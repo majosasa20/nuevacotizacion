@@ -22,7 +22,17 @@ class AdministrarCaracteristicasxEmpresaController{
   Future? init(BuildContext context, Function refresh) async {
     this.context = context;
     this.refresh = refresh;
-    obtenerDatos();
+    final nombreEmpresaValue = await _sharedPref.read('nombreEmpresa');
+    final idEmpresaValue = await _sharedPref.read('idEmpresa');
+    if (nombreEmpresaValue != null) {
+      nombre_empresa = nombreEmpresaValue.toString();
+      print('Nombre de la empresa catalogos $nombre_empresa');
+    }
+    if (idEmpresaValue != null) {
+      id_empresa = int.parse(idEmpresaValue.toString());
+      print('ID de la empresa catalogos $id_empresa');
+    }
+    // obtenerDatos();
     // empresas = Empresas.fromJson(await _sharedPref.read('empresa') ?? {});
     // print('caracteristicas empresa: $nombre_empresa');
     // final parametros = ModalRoute

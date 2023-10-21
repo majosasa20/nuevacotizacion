@@ -1,21 +1,21 @@
-import 'package:cotizaciones_hdg/src/models/cotizacion_model.dart';
-import 'package:cotizaciones_hdg/src/pages/administrar_cotizaciones/admin_cotizacionesEmpresaController.dart';
+import 'package:cotizaciones_hdg/src/pages/administrar_cotizaciones/cotizaciones_clientes/cotizaciones_clientes_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-import '../../styles/estilos.dart';
+import '../../../models/cotizacion_model.dart';
+import '../../../styles/estilos.dart';
 
-class AdminCotizaciones extends StatefulWidget {
-  const AdminCotizaciones({super.key});
+class CotizacionesClientes extends StatefulWidget {
+  const CotizacionesClientes({super.key});
 
   @override
-  State<AdminCotizaciones> createState() => _AdminCotizacionesState();
+  State<CotizacionesClientes> createState() => _CotizacionesClientesState();
 }
 
-class _AdminCotizacionesState extends State<AdminCotizaciones> {
+class _CotizacionesClientesState extends State<CotizacionesClientes> {
+  CotizacionesClienteController _con = new CotizacionesClienteController();
   late List<Cotizacion?> cotizaciones;
   final DateFormat dateFormat = DateFormat('dd-MM-yyyy');
-  AdminCotizacionesController _con = new AdminCotizacionesController();
 
   void refresh() {
     setState(() {});
@@ -31,7 +31,7 @@ class _AdminCotizacionesState extends State<AdminCotizaciones> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('EMPLEADO'),
+          title: Text('CLIENTE'),
         ),
         body: Container(
             width: MediaQuery.of(context).size.width * 1,
@@ -58,7 +58,10 @@ class _AdminCotizacionesState extends State<AdminCotizaciones> {
                         Column(
                           children: _con.cotizaciones != null
                               ? [_buttonCotizaciones(_con.cotizaciones)]
-                              : [],
+                              : [
+                                SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+                                _textSinCotizaciones()
+                                ],
                         ),
                         SizedBox(
                             height: MediaQuery.of(context).size.height * 0.1),
@@ -107,15 +110,23 @@ class _AdminCotizacionesState extends State<AdminCotizaciones> {
   }
 
   Widget _textBienvenido() {
-    print(_con.nombre_empresa);
+    print(_con.usuarios?.nombreUsuario);
     return Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-      Text('COTIZACIONES',
+      Text('COTIZACIONES de',
           style: TextStyle(
               color: Colors.white, fontSize: 40, fontWeight: FontWeight.bold)),
       SizedBox(height: 5),
-      Text(_con.nombre_empresa ?? "EMPRESA",
+      Text(_con.usuarios?.nombreUsuario ?? "USUARIO",
           style: TextStyle(
               color: Colors.white, fontSize: 35, fontWeight: FontWeight.bold))
+    ]);
+  }
+  Widget _textSinCotizaciones() {
+    // print(_con.usuarios?.nombreUsuario);
+    return Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+      Text('No hay cotización de este usuario',
+          style: TextStyle(
+              color: Colors.redAccent, fontSize: 35, fontWeight: FontWeight.bold))
     ]);
   }
 
@@ -137,8 +148,8 @@ class _AdminCotizacionesState extends State<AdminCotizaciones> {
                   style: TextStyle(fontSize: 21),
                 ),
                 Text(
-                '${cotizacion?.nombreUsuario ?? 'USUARIO'} $fechaFormateada',
-                style: TextStyle(fontSize: 18),
+                  '${cotizacion?.nombreUsuario ?? 'USUARIO'} $fechaFormateada',
+                  style: TextStyle(fontSize: 18),
                 ),
               ],
             ),
@@ -154,5 +165,4 @@ class _AdminCotizacionesState extends State<AdminCotizaciones> {
       }).toList(),
     );
   }
-
 }

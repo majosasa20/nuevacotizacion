@@ -45,9 +45,20 @@ class CrearServicioController {
   Future? init(BuildContext context, Function refresh) async {
     this.context = context;
     this.refresh = refresh;
-    await obtenerDatos();
-    idServicio = ModalRoute.of(context!)!.settings.arguments;
+    final nombreEmpresaValue = await _sharedPref.read('nombreEmpresa');
+    final idEmpresaValue = await _sharedPref.read('idEmpresa');
 
+    if (nombreEmpresaValue != null) {
+      nombre_empresa = nombreEmpresaValue.toString();
+      print('Nombre de la empresa catalogos $nombre_empresa');
+    }
+
+    if (idEmpresaValue != null) {
+      id_empresa = int.parse(idEmpresaValue.toString());
+      print('ID de la empresa catalogos $id_empresa');
+    }
+    // await obtenerDatos();
+    idServicio = ModalRoute.of(context!)!.settings.arguments;
     empresaController.text = nombre_empresa!;
 
     //LLENAR EL DROPDOWN ESTADOS
@@ -114,7 +125,7 @@ class CrearServicioController {
         MySnackbar.show(context!, "Seleciona una imagen");
         return;
       }
-      Stream stream = await serviciosProvider.crearWithImage(id_empresa!, nombreServicio, descripcion, salidaUbicacion, precio, duracion,nombreArchivo, idcaracteristica, imageFile!);
+      Stream stream = await serviciosProvider.crearWithImage(id_empresa, nombreServicio, descripcion, salidaUbicacion, precio, duracion,nombreArchivo, idcaracteristica, imageFile!);
       stream.listen((res) {
         // ResponseApi? responseApinew = await serviciosProvider.crearWithImage(id_empresa!, nombreServicio, descripcion, salidaUbicacion, precio, duracion,nombreArchivo, idcaracteristica, imageFile!);
         ResponseApi? responseApinew = ResponseApi.fromJson(json.decode(res));
