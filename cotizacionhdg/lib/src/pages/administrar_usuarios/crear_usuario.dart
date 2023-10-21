@@ -53,12 +53,12 @@ class _CrearUsuarioState extends State<CrearUsuario> {
                       children: [
                         _textBienvenido(),
                         SizedBox(height: MediaQuery.of(context).size.height * 0.04),
-                        _textNombre(),
-                        _textFieldNombre(),
+                        // _textNombre(),
+                        // _textFieldNombre(),
                         _textCorreo(),
                         _textFieldCorreo(),
-                        _textNumero(),
-                        _textFieldTelefono(),
+                        // _textNumero(),
+                        // _textFieldTelefono(),
                         _textRol(),
                         Column(
                           children: _con.roleslist != null
@@ -124,15 +124,15 @@ class _CrearUsuarioState extends State<CrearUsuario> {
         ]
     );
   }
-  Widget _textNombre(){
-    return Container(
-      margin: EdgeInsets.symmetric(horizontal: 50, vertical: 5),
-      alignment: Alignment.centerLeft,
-      child: Text('Nombre Completo',
-        style: TextStyle(color: Colors.black45, fontSize: 20, fontWeight: FontWeight.bold),
-      ),
-    );
-  }
+  // Widget _textNombre(){
+  //   return Container(
+  //     margin: EdgeInsets.symmetric(horizontal: 50, vertical: 5),
+  //     alignment: Alignment.centerLeft,
+  //     child: Text('Nombre Completo',
+  //       style: TextStyle(color: Colors.black45, fontSize: 20, fontWeight: FontWeight.bold),
+  //     ),
+  //   );
+  // }
   Widget _textCorreo(){
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 50, vertical: 5),
@@ -142,15 +142,15 @@ class _CrearUsuarioState extends State<CrearUsuario> {
       ),
     );
   }
-  Widget _textNumero(){
-    return Container(
-      margin: EdgeInsets.symmetric(horizontal: 50, vertical: 5),
-      alignment: Alignment.centerLeft,
-      child: Text('Número',
-        style: TextStyle(color: Colors.black45, fontSize: 20, fontWeight: FontWeight.bold),
-      ),
-    );
-  }
+  // Widget _textNumero(){
+  //   return Container(
+  //     margin: EdgeInsets.symmetric(horizontal: 50, vertical: 5),
+  //     alignment: Alignment.centerLeft,
+  //     child: Text('Número',
+  //       style: TextStyle(color: Colors.black45, fontSize: 20, fontWeight: FontWeight.bold),
+  //     ),
+  //   );
+  // }
   Widget _textRol(){
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 50, vertical: 5),
@@ -160,31 +160,31 @@ class _CrearUsuarioState extends State<CrearUsuario> {
       ),
     );
   }
-  Widget _textFieldNombre() {
-    return Container(
-      margin: EdgeInsets.symmetric(horizontal: 50, vertical: 5),
-      decoration: BoxDecoration(
-          color: MyColors.primaryOpacityColor,
-          borderRadius: BorderRadius.circular(30)
-      ),
-      child:
-      TextField(
-        controller: _con.nombreController,
-        decoration: InputDecoration(
-            hintText: 'Nombre Completo',
-            border: InputBorder.none,
-            contentPadding: EdgeInsets.all(15),
-            hintStyle: TextStyle(
-                color: Colors.white60
-            ),
-            prefixIcon: Icon(
-                Icons.airplanemode_active_rounded,
-                color: Colors.white60
-            )
-        ),
-      ),
-    );
-  }
+  // Widget _textFieldNombre() {
+  //   return Container(
+  //     margin: EdgeInsets.symmetric(horizontal: 50, vertical: 5),
+  //     decoration: BoxDecoration(
+  //         color: MyColors.primaryOpacityColor,
+  //         borderRadius: BorderRadius.circular(30)
+  //     ),
+  //     child:
+  //     TextField(
+  //       controller: _con.nombreController,
+  //       decoration: InputDecoration(
+  //           hintText: 'Nombre Completo',
+  //           border: InputBorder.none,
+  //           contentPadding: EdgeInsets.all(15),
+  //           hintStyle: TextStyle(
+  //               color: Colors.white60
+  //           ),
+  //           prefixIcon: Icon(
+  //               Icons.airplanemode_active_rounded,
+  //               color: Colors.white60
+  //           )
+  //       ),
+  //     ),
+  //   );
+  // }
   Widget _textFieldCorreo() {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 50, vertical: 5),
@@ -211,31 +211,31 @@ class _CrearUsuarioState extends State<CrearUsuario> {
       ),
     );
   }
-  Widget _textFieldTelefono() {
-    return Container(
-      margin: EdgeInsets.symmetric(horizontal: 50, vertical: 5),
-      decoration: BoxDecoration(
-          color: MyColors.primaryOpacityColor,
-          borderRadius: BorderRadius.circular(30)
-      ),
-      child: TextField(
-        controller: _con.telefonoController,
-        keyboardType: TextInputType.number,
-        decoration: InputDecoration(
-            hintText: 'Teléfono',
-            border: InputBorder.none,
-            contentPadding: EdgeInsets.all(15),
-            hintStyle: TextStyle(
-                color: Colors.white60
-            ),
-            prefixIcon: Icon(
-                Icons.airplanemode_active_rounded,
-                color: Colors.white60
-            )
-        ),
-      ),
-    );
-  }
+  // Widget _textFieldTelefono() {
+  //   return Container(
+  //     margin: EdgeInsets.symmetric(horizontal: 50, vertical: 5),
+  //     decoration: BoxDecoration(
+  //         color: MyColors.primaryOpacityColor,
+  //         borderRadius: BorderRadius.circular(30)
+  //     ),
+  //     child: TextField(
+  //       controller: _con.telefonoController,
+  //       keyboardType: TextInputType.number,
+  //       decoration: InputDecoration(
+  //           hintText: 'Teléfono',
+  //           border: InputBorder.none,
+  //           contentPadding: EdgeInsets.all(15),
+  //           hintStyle: TextStyle(
+  //               color: Colors.white60
+  //           ),
+  //           prefixIcon: Icon(
+  //               Icons.airplanemode_active_rounded,
+  //               color: Colors.white60
+  //           )
+  //       ),
+  //     ),
+  //   );
+  // }
   Widget _dropdownRol(List<Roles?> roles) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -317,7 +317,8 @@ class _CrearUsuarioState extends State<CrearUsuario> {
               onPressed: () {
                 Navigator.of(context).pop(); // Cerrar el diálogo
                 // print(rol);
-                _con.guardarUsuario(rol);
+                // _con.guardarUsuario(rol);
+                _con.guardarEmpleado(rol);
               },
             ),
           ],

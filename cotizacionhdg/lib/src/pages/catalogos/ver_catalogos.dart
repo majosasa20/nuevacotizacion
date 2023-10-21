@@ -65,10 +65,6 @@ class _VerCatalogosPageState extends State<VerCatalogosPage> {
                         SizedBox(height: MediaQuery.of(context).size.height * 0.05),
                         _buttonCaracteristicas(),
                         SizedBox(height: MediaQuery.of(context).size.height * 0.02),
-                        // if (_con.nombre_empresa == 'SERVIAVIA')
-                        // _buttonAeronaves()
-                        // else
-                        // SizedBox(height: MediaQuery.of(context).size.height * 0.02),
                         _buttonServicios(),
                         SizedBox(height: MediaQuery.of(context).size.height * 0.02)
                       ],
@@ -154,33 +150,11 @@ class _VerCatalogosPageState extends State<VerCatalogosPage> {
     );
   }
 
-  Widget _buttonAeronaves() {
-    return Container(
-      width: double.infinity,
-      margin: EdgeInsets.symmetric(horizontal: 50, vertical: 15),
-      child: ElevatedButton(
-        // onPressed: _con.login,
-        // onPressed: _con.goToClientePage,
-        onPressed: _con.goToLoginPage,
-        child: Text('Aeronaves', style: TextStyle(fontSize: 21)),
-        style: ElevatedButton.styleFrom(
-            backgroundColor: MyColors.secondaryColor,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(30),
-            ),
-            padding: EdgeInsets.symmetric(vertical: 10)
-        ),
-      ),
-    );
-  }
-
   Widget _buttonServicios() {
     return Container(
       width: double.infinity,
       margin: EdgeInsets.symmetric(horizontal: 50, vertical: 15),
       child: ElevatedButton(
-        // onPressed: _con.login,
-        // onPressed: _con.goToClientePage,
         onPressed: () {_con.goToAdministrarServiciosPage();},
         child: Text('Servicios', style: TextStyle(fontSize: 21)),
         style: ElevatedButton.styleFrom(

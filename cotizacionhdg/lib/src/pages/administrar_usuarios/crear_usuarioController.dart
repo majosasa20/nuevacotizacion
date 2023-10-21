@@ -1,4 +1,3 @@
-import 'dart:ffi';
 import 'package:cotizaciones_hdg/src/models/roles.dart';
 import 'package:cotizaciones_hdg/src/models/usuario.dart';
 import 'package:cotizaciones_hdg/src/provider/usuarios_provider.dart';
@@ -35,20 +34,10 @@ class CrearUsuarioController
   Future? init(BuildContext context, Function refresh) async {
     this.context = context;
     this.refresh = refresh;
-    final nombreEmpresaValue = await _sharedPref.read('nombreEmpresa');
-    final idEmpresaValue = await _sharedPref.read('idEmpresa');
-    if (nombreEmpresaValue != null) {
-      nombre_empresa = nombreEmpresaValue.toString();
-      print('Nombre de la empresa  $nombre_empresa');
-    }
-    if (idEmpresaValue != null) {
-      id_empresa = int.parse(idEmpresaValue.toString());
-      print('ID de la empresa  $id_empresa');
-    }
-    // obtenerDatos();
+    obtenerDatos();
     // refresh();
-    // print('Nombre de la empresa catalogos $nombre_empresa');
-    // print('Id de la empresa catalogos $id_empresa');
+    print('Nombre de la empresa catalogos $nombre_empresa');
+    print('Id de la empresa catalogos $id_empresa');
     // empresas = Empresas.fromJson(await _sharedPref.read('empresa') ?? {});
 
     ResponseApi? responseApirol = await rolesProvider.getRolesxEmpresa(id_empresa);
@@ -79,7 +68,7 @@ class CrearUsuarioController
     refresh();
   }
 
-  Future<void> obtenerDatos() async {
+  Future<int> obtenerDatos() async {
     final nombreEmpresaValue = await _sharedPref.read('nombreEmpresa');
     final idEmpresaValue = await _sharedPref.read('idEmpresa');
     if (nombreEmpresaValue != null) {
@@ -90,26 +79,54 @@ class CrearUsuarioController
       id_empresa = int.parse(idEmpresaValue.toString());
       print('ID de la empresa  $id_empresa');
     }
-    refresh!();
+    return id_empresa;
   }
 
-  Future<void> guardarUsuario(idRol) async {
-    String? nombre = nombreController.text.trim();
+  // Future<void> guardarUsuario(idRol) async {
+  //   String? nombre = nombreController.text.trim();
+  //   String? correo = correoController.text;
+  //   String? telefono = telefonoController.text.trim();
+  //   print('nombre: $nombre, correo. $correo, telefono: $telefono');
+  //
+  //   if (nombre.isEmpty || correo.isEmpty || telefono.isEmpty || idRol == null) {
+  //     MySnackbar.show(context!, 'Debes ingresar todos los campos');
+  //     return;
+  //   } else {
+  //     if (telefono.length < 8){
+  //       MySnackbar.show(context!, 'Longitud de teléfono incorrecta');
+  //     }else{
+  //       int? id_rol = int.tryParse(idRol);
+  //       if (id_rol != null) {
+  //         int? telefonoFinal = int.tryParse(telefono);
+  //         ResponseApi? responseApinew = await usuariosProvider.agregarUsuario(nombre, correo, telefonoFinal, id_rol, id_empresa);
+  //         MySnackbar.show(context!, responseApinew?.message);
+  //
+  //         if (responseApinew!.success!) {
+  //           Future.delayed(Duration(seconds: 3), () {
+  //             Map<String, dynamic> parametros = {
+  //               "idEmpresa": id_empresa,
+  //               "nombreEmpresa": nombre_empresa,
+  //             };
+  //             Navigator.pushReplacementNamed(context!, 'adminusuariosempresa', arguments: parametros);
+  //           });
+  //         } else {
+  //           MySnackbar.show(context!, "Error al crear el usuario.");
+  //         }
+  //       }
+  //     }
+  //     }
+  //   }
+  Future<void> guardarEmpleado(idRol) async {
     String? correo = correoController.text;
-    String? telefono = telefonoController.text.trim();
-    print('nombre: $nombre, correo. $correo, telefono: $telefono');
+    // print('nombre: $nombre, correo. $correo, telefono: $telefono');
 
-    if (nombre.isEmpty || correo.isEmpty || telefono.isEmpty || idRol == null) {
+    if (correo.isEmpty || idRol == null) {
       MySnackbar.show(context!, 'Debes ingresar todos los campos');
       return;
     } else {
-      if (telefono.length < 8){
-        MySnackbar.show(context!, 'Longitud de teléfono incorrecta');
-      }else{
         int? id_rol = int.tryParse(idRol);
         if (id_rol != null) {
-          int? telefonoFinal = int.tryParse(telefono);
-          ResponseApi? responseApinew = await usuariosProvider.agregarUsuario(nombre, correo, telefonoFinal, id_rol, id_empresa);
+          ResponseApi? responseApinew = await usuariosProvider.agregarEmpleado(correo, id_rol, id_empresa);
           MySnackbar.show(context!, responseApinew?.message);
 
           if (responseApinew!.success!) {
@@ -121,12 +138,11 @@ class CrearUsuarioController
               Navigator.pushReplacementNamed(context!, 'adminusuariosempresa', arguments: parametros);
             });
           } else {
-            MySnackbar.show(context!, "Error al crear el usuario.");
+            MySnackbar.show(context!, "Error al agregar el empleado.");
           }
-        }
-      }
       }
     }
+  }
 
     void cancelar(id_empresa, nombre_empresa){
       Map<String, dynamic> parametros = {

@@ -8,7 +8,7 @@ class MySnackbar{
 
     ScaffoldMessenger.of(context).removeCurrentSnackBar();
     ScaffoldMessenger.of(context).showSnackBar(
-      new SnackBar(
+      SnackBar(
         content: Text(
           text!,
           textAlign: TextAlign.center,

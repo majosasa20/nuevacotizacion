@@ -83,6 +83,7 @@ class LoginController {
     // print('EMAIL: $email');
     // print('PASSWORD: $password');
     ResponseApi? responseApi = await usuariosProvider.login(email, password);
+    print('resultado: ${responseApi}');
   //
     if (responseApi != null && responseApi.success!) {
       Usuario usuario = Usuario.fromJson(responseApi.data);
