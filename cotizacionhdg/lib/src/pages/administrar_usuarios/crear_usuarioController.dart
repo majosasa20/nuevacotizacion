@@ -10,13 +10,15 @@ import '../../provider/roles_provider.dart';
 import '../../styles/my_snackbar.dart';
 import '../../styles/shared_pref.dart';
 
-class CrearUsuarioController{
+class CrearUsuarioController
+{
   BuildContext? context;
   Function? refresh;
   SharedPref _sharedPref = new SharedPref();
   Empresas? empresas;
-  late int id_empresa;// = empresas?.idEmpresa;
-  late String? nombre_empresa = '';
+
+  int id_empresa = 0;// = empresas?.idEmpresa;
+  String? nombre_empresa = '';
   // late int? id_empresa = empresas?.idEmpresa;
   // late String? nombre_empresa = empresas?.nombreEmpresa;
   late List<Roles?> roleslist = [];
@@ -33,7 +35,20 @@ class CrearUsuarioController{
   Future? init(BuildContext context, Function refresh) async {
     this.context = context;
     this.refresh = refresh;
-    obtenerDatos();
+    final nombreEmpresaValue = await _sharedPref.read('nombreEmpresa');
+    final idEmpresaValue = await _sharedPref.read('idEmpresa');
+    if (nombreEmpresaValue != null) {
+      nombre_empresa = nombreEmpresaValue.toString();
+      print('Nombre de la empresa  $nombre_empresa');
+    }
+    if (idEmpresaValue != null) {
+      id_empresa = int.parse(idEmpresaValue.toString());
+      print('ID de la empresa  $id_empresa');
+    }
+    // obtenerDatos();
+    // refresh();
+    // print('Nombre de la empresa catalogos $nombre_empresa');
+    // print('Id de la empresa catalogos $id_empresa');
     // empresas = Empresas.fromJson(await _sharedPref.read('empresa') ?? {});
 
     ResponseApi? responseApirol = await rolesProvider.getRolesxEmpresa(id_empresa);
@@ -67,16 +82,15 @@ class CrearUsuarioController{
   Future<void> obtenerDatos() async {
     final nombreEmpresaValue = await _sharedPref.read('nombreEmpresa');
     final idEmpresaValue = await _sharedPref.read('idEmpresa');
-
     if (nombreEmpresaValue != null) {
       nombre_empresa = nombreEmpresaValue.toString();
-      print('Nombre de la empresa catalogos $nombre_empresa');
+      print('Nombre de la empresa  $nombre_empresa');
     }
-
     if (idEmpresaValue != null) {
       id_empresa = int.parse(idEmpresaValue.toString());
-      print('ID de la empresa catalogos $id_empresa');
+      print('ID de la empresa  $id_empresa');
     }
+    refresh!();
   }
 
   Future<void> guardarUsuario(idRol) async {

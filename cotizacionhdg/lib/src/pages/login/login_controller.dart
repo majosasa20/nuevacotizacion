@@ -21,13 +21,16 @@ class LoginController {
 
     Usuario usuario = Usuario.fromJson(await _sharedPref.read('usuario') ?? {});
     // print('Usuario: ${usuario.toJson()}');
+    /*
     if (usuario?.sessionToken != null){
+
       // Navigator.pushNamedAndRemoveUntil(context, 'clientepage', (route) => false);
       // Navigator.pushNamed(context, 'clientepage');
     }
     else{
       Navigator.pushNamedAndRemoveUntil(context, 'login', (route) => false);
     }
+    */
   }
 
   void goToRegisterPage() {

@@ -65,10 +65,10 @@ class _VerCatalogosPageState extends State<VerCatalogosPage> {
                         SizedBox(height: MediaQuery.of(context).size.height * 0.05),
                         _buttonCaracteristicas(),
                         SizedBox(height: MediaQuery.of(context).size.height * 0.02),
-                        if (_con.nombre_empresa == 'SERVIAVIA')
-                        _buttonAeronaves()
-                        else
-                        SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+                        // if (_con.nombre_empresa == 'SERVIAVIA')
+                        // _buttonAeronaves()
+                        // else
+                        // SizedBox(height: MediaQuery.of(context).size.height * 0.02),
                         _buttonServicios(),
                         SizedBox(height: MediaQuery.of(context).size.height * 0.02)
                       ],
