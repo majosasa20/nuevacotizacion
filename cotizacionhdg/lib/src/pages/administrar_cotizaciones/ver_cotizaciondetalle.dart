@@ -62,8 +62,13 @@ class _VerCotizacionDetallePageState extends State<VerCotizacionDetallePage> {
                         _textFieldTelefono(),
                         _textDestino(),
                         _textFieldDestino(),
-                        _textCaracteristica(),
-                        _textFieldCaracteristica(),
+                        if (_con.cotizaciones!.nombreServicio != 'COMBUSTIBLE')
+                          Column(
+                            children: [
+                              _textCaracteristica(),
+                              _textFieldCaracteristica(),
+                            ],
+                          ),
                         _textObservaciones(),
                         _textFieldFObservaciones(),
                         _textFechaServicio(),

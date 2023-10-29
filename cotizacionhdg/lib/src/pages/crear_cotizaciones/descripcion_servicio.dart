@@ -629,7 +629,8 @@ class _DescripcionServicioPageState extends State<DescripcionServicioPage> {
               selectedUbicacionOption,
               selectedUbicacionText,
               selectedCombustibleValue,
-              selectedCombustibleText);
+              selectedCombustibleText,
+              IDcaracteristicaServicio);
         }
         },
       child: Text('COTIZAR',

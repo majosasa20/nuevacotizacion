@@ -24,7 +24,19 @@ class AdminCotizacionesController {
     this.refresh = refresh;
     // empresas = Empresas.fromJson(await _sharedPref.read('empresa') ?? {});
     // nombre_empresa = empresas?.nombreEmpresa;
-    obtenerDatos();
+    // obtenerDatos();
+    final nombreEmpresaValue = await _sharedPref.read('nombreEmpresa');
+    final idEmpresaValue = await _sharedPref.read('idEmpresa');
+
+    if (nombreEmpresaValue != null) {
+      nombre_empresa = nombreEmpresaValue.toString();
+      print('Nombre de la empresa catalogos $nombre_empresa');
+    }
+
+    if (idEmpresaValue != null) {
+      id_empresa = int.parse(idEmpresaValue.toString());
+      print('ID de la empresa catalogos $id_empresa');
+    }
     // print('empresa cotizaciones: ${nombre_empresa}');
 
     if (id_empresa != null) {

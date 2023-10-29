@@ -35,9 +35,21 @@ class VerDetalleUsuarioController{
   Future? init(BuildContext context, Function refresh) async {
     this.context = context;
     this.refresh = refresh;
-    obtenerDatos();
+    // obtenerDatos();
+    final nombreEmpresaValue = await _sharedPref.read('nombreEmpresa');
+    final idEmpresaValue = await _sharedPref.read('idEmpresa');
+
+    if (nombreEmpresaValue != null) {
+      nombre_empresa = nombreEmpresaValue.toString();
+      print('Nombre de la empresa catalogos $nombre_empresa');
+    }
+
+    if (idEmpresaValue != null) {
+      id_empresa = int.parse(idEmpresaValue.toString());
+      print('ID de la empresa catalogos $id_empresa');
+    }
     // empresas = Empresas.fromJson(await _sharedPref.read('empresa') ?? {});
-    idUsuario = ModalRoute.of(context!)!.settings.arguments;
+    idUsuario = ModalRoute.of(context)!.settings.arguments;
     print('idusuario: $idUsuario');
 
     if (idUsuario != null) {

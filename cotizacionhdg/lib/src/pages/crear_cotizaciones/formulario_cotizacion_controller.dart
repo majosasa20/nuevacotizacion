@@ -54,9 +54,10 @@ class FormularioCotizacionController {
     ubicacion= parametros["ubicacion"];
     idCombustible= parametros["idCombustible"];
     combustible= parametros["combustible"];
-    if (nombreServicio == 'COMBUSTIBLE') {
-      idCaracteristica = int.parse(idCombustible);
-    } else {idCaracteristica=parametros["idCaracteristica"];}
+    idCaracteristica = parametros["idCaracteristica"];
+    // if (nombreServicio == 'COMBUSTIBLE') {
+    //   idCaracteristica = int.parse(idCombustible);
+    // } else {idCaracteristica=parametros["idCaracteristica"];}
     caracteristica=parametros["Caracteristica"];
 print("${parametros}");
     //llena los textfield
@@ -111,7 +112,7 @@ print("${parametros}");
         Cotizacion cotizacion = new Cotizacion(
             cod_empresa: int.parse(codEmpresa),
             destino: destino,
-            observaciones:observaciones,
+            observaciones:observaciones + caracteristicas,
             id_usuario:usuario?.idUsuario,
             cod_servicio:int.parse(codServicio),
             cod_aeronave:null,

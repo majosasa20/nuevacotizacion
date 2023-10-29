@@ -145,7 +145,8 @@ class DescripcionServicioController {
       dynamic idUbicacion,
       dynamic ubicacion,
       dynamic idCombustible,
-      dynamic combustible
+      dynamic combustible,
+      dynamic idCaracteristicaServicio
       ) {
     Map<String, dynamic> parametros = {
       "codEmpresa": codEmpresa,
@@ -157,7 +158,8 @@ class DescripcionServicioController {
       "idUbicacion": idUbicacion,
       "ubicacion": ubicacion,
       "idCombustible": idCombustible,
-      "combustible": combustible
+      "combustible": combustible,
+      "idCaracteristica": idCaracteristicaServicio
     };
     // print(parametros);
     Navigator.pushNamed(context!, 'formularioCotizacion', arguments: parametros);

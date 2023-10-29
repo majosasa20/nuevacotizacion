@@ -21,7 +21,7 @@ class VerCotizacionDetalleController {
   // late String? nombre_empresa = '';
   late List<EstadosCotizacion?> estadocotlist = [];
   EstadosCotizacion? estadoCotizacion;
-  late dynamic idCotizacion;
+  late dynamic idCotizacion = '';
   EstadosCotizacionProvider estadoCotizacionProvider = new EstadosCotizacionProvider();
   CotizacionesProvider cotizacionesProvider = new CotizacionesProvider();
   Cotizacion? cotizaciones;
@@ -41,9 +41,21 @@ class VerCotizacionDetalleController {
   Future? init(BuildContext context, Function refresh) async {
     this.context = context;
     this.refresh = refresh;
-    obtenerDatos();
+    // obtenerDatos();
+    final nombreEmpresaValue = await _sharedPref.read('nombreEmpresa');
+    final idEmpresaValue = await _sharedPref.read('idEmpresa');
+    idCotizacion = ModalRoute.of(context)!.settings.arguments;
+    if (nombreEmpresaValue != null) {
+      nombre_empresa = nombreEmpresaValue.toString();
+      print('Nombre de la empresa catalogos $nombre_empresa');
+    }
+
+    if (idEmpresaValue != null) {
+      id_empresa = int.parse(idEmpresaValue.toString());
+      print('ID de la empresa catalogos $id_empresa');
+    }
     // empresas = Empresas.fromJson(await _sharedPref.read('empresa') ?? {});
-    idCotizacion = ModalRoute.of(context!)!.settings.arguments;
+
     // nombre_empresa = empresas?.nombreEmpresa;
     // print('idusuario: $idUsuario');
 

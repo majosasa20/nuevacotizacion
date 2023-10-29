@@ -65,22 +65,6 @@ class _ServiciosCotizacionesPageState extends State<ServiciosCotizacionesPage> {
                       ],
                         )
                       ]
-                      //   _con.servicios != null
-                      //     ? _con.servicios!.map<Widget>((Servicio? servicio) {
-                      //   return _cardServicios(servicio!);
-                      // }).toList()
-
-                      // _con.servicios != null
-                      //   ? [
-                      //   _textBienvenido(),
-                      //   SizedBox(height: MediaQuery.of(context).size.height * 0.04),
-                      //   _cardServicios(_con.servicios as Servicio),
-                      // ]
-                      //     : [
-                      //   _textBienvenido(),
-                      //   SizedBox(height: MediaQuery.of(context).size.height * 0.04),
-                      //   _imagesServicios(),
-                      // ],
                     ),
                   ),
                 )
@@ -138,7 +122,37 @@ class _ServiciosCotizacionesPageState extends State<ServiciosCotizacionesPage> {
     ]);
   }
 
-    Widget _cardServicios(Servicio servicios) {
+  //   Widget _cardServicios(Servicio servicios) {
+  //   return GestureDetector(
+  //     onTap: () {
+  //       _con.goToDescripcionServicioPage(servicios.id_servicio, _con.id_empresa, _con.nombre_empresa);
+  //     },
+  //     child: Container(
+  //       height: 140,
+  //       width: 189,
+  //       margin: EdgeInsets.all(8.0), // Espacio entre cada tarjeta de servicio
+  //       decoration: BoxDecoration(
+  //         image: DecorationImage(
+  //           image: servicios.imagenencabezado != null
+  //               ? AssetImage(servicios.imagenencabezado.toString())
+  //               : AssetImage('assets/img/hdg.png'),
+  //           fit: BoxFit.fill,
+  //         ),
+  //         boxShadow: [
+  //           new BoxShadow(
+  //             color: MyColors.primaryColor,
+  //             offset: Offset(1, 5),
+  //             blurRadius: 10,
+  //           ),
+  //         ],
+  //       ),
+  //     ),
+  //   );
+  // }
+
+// En tu widget que muestra las tarjetas de servicios en pares
+
+  Widget _cardServicios(Servicio servicios) {
     return GestureDetector(
       onTap: () {
         _con.goToDescripcionServicioPage(servicios.id_servicio, _con.id_empresa, _con.nombre_empresa);
@@ -146,16 +160,16 @@ class _ServiciosCotizacionesPageState extends State<ServiciosCotizacionesPage> {
       child: Container(
         height: 140,
         width: 189,
-        margin: EdgeInsets.all(8.0), // Espacio entre cada tarjeta de servicio
+        margin: EdgeInsets.all(8.0),
         decoration: BoxDecoration(
           image: DecorationImage(
             image: servicios.imagenencabezado != null
-                ? AssetImage(servicios.imagenencabezado.toString())
+                ? Image.network(servicios.imagenencabezado.toString()).image
                 : AssetImage('assets/img/hdg.png'),
             fit: BoxFit.fill,
           ),
           boxShadow: [
-            new BoxShadow(
+            BoxShadow(
               color: MyColors.primaryColor,
               offset: Offset(1, 5),
               blurRadius: 10,
@@ -166,7 +180,6 @@ class _ServiciosCotizacionesPageState extends State<ServiciosCotizacionesPage> {
     );
   }
 
-// En tu widget que muestra las tarjetas de servicios en pares
   Widget _serviciosEnPares(List<Servicio?> servicios) {
     List<Widget> rows = [];
     for (int i = 0; i < servicios.length; i += 2) {
