@@ -1,6 +1,7 @@
 import 'package:cotizaciones_hdg/src/models/cotizacion_model.dart';
 import 'package:cotizaciones_hdg/src/models/response_api.dart';
 import 'package:cotizaciones_hdg/src/provider/cotizaciones_provider.dart';
+import 'package:cotizaciones_hdg/src/provider/enviar_correo_provider.dart';
 import 'package:flutter/material.dart';
 import '../../models/usuario.dart';
 import '../../styles/my_snackbar.dart';
@@ -12,7 +13,7 @@ class FormularioCotizacionController {
   SharedPref _sharedPref = new SharedPref();
   Function? refresh;
   //declarando variables para parámetros recibidos
-  late dynamic nombreServicio;
+  late dynamic nombreServicio = '';
   late dynamic codEmpresa;
   late dynamic cantidadMedida;
   late dynamic medida;
@@ -26,6 +27,7 @@ class FormularioCotizacionController {
   late dynamic idCaracteristica;
   late dynamic caracteristica;
   CotizacionesProvider cotizacionesProvider = new CotizacionesProvider();
+  EnviarCorreoProvider enviarcorreoProvider = new EnviarCorreoProvider();
 
   TextEditingController servicioController = new TextEditingController();
   TextEditingController nombreUsuarioController = new TextEditingController();
@@ -43,10 +45,13 @@ class FormularioCotizacionController {
     usuario = Usuario.fromJson(await _sharedPref.read('usuario'));
     //parámetros del servicio
     final parametros = ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
+    print(parametros["nombreServicio"]);
     nombre_empresa = parametros["nombreEmpresa"];
+    print('Valor de nombre_empresa: $nombre_empresa');
+    refresh();
     codEmpresa= parametros["codEmpresa"];
     codServicio = parametros["codServicio"];
-    nombreServicio= parametros["nombreServicio"];
+    nombreServicio = parametros["nombreServicio"] ?? 'Servicio'; // Puedes usar un valor predeterminado si "nombreServicio" es nulo
     cantidadMedida= parametros["cantidadMedida"];
     medida = parametros["medida"];
     textFieldValues= parametros["textFieldValues"];
@@ -55,10 +60,11 @@ class FormularioCotizacionController {
     idCombustible= parametros["idCombustible"];
     combustible= parametros["combustible"];
     idCaracteristica = parametros["idCaracteristica"];
+    caracteristica=parametros["Caracteristica"];
     // if (nombreServicio == 'COMBUSTIBLE') {
     //   idCaracteristica = int.parse(idCombustible);
     // } else {idCaracteristica=parametros["idCaracteristica"];}
-    caracteristica=parametros["Caracteristica"];
+
 print("${parametros}");
     //llena los textfield
     servicioController.text = nombreServicio;
@@ -112,7 +118,7 @@ print("${parametros}");
         Cotizacion cotizacion = new Cotizacion(
             cod_empresa: int.parse(codEmpresa),
             destino: destino,
-            observaciones:observaciones + caracteristicas,
+            observaciones:observaciones + " --- " +caracteristicas,
             id_usuario:usuario?.idUsuario,
             cod_servicio:int.parse(codServicio),
             cod_aeronave:null,
@@ -127,6 +133,7 @@ print("${parametros}");
         if (responseApi != null && responseApi is ResponseApi) {
           MySnackbar.show(context!, responseApi.message);
           if (responseApi.success!){
+            // ResponseApi? responseApi = await enviarcorreoProvider.postCorreoCrearCotizacion(cotizacion);
             Future.delayed(Duration(seconds: 3), () {
               Navigator.pushReplacementNamed(context!, 'clientepage');
             });

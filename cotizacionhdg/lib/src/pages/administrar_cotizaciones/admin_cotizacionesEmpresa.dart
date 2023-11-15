@@ -29,9 +29,10 @@ class _AdminCotizacionesState extends State<AdminCotizaciones> {
 
   @override
   Widget build(BuildContext context) {
+    String txtAppBar = '';
     return Scaffold(
         appBar: AppBar(
-          title: Text('EMPLEADO'),
+          title: Text('Menú> Cotizaciones ${_con.nombre_empresa}', style: TextStyle(fontSize: 19),),
         ),
         body: Container(
             width: MediaQuery.of(context).size.width * 1,
@@ -41,14 +42,14 @@ class _AdminCotizacionesState extends State<AdminCotizaciones> {
                 Positioned(top: -4, bottom: -5, child: _imgFondoNube()),
                 Positioned(top: 0, bottom: 0, child: _fondoOpaco()),
                 Positioned(
-                  top: 50,
+                  top: 35,
                   right: 40,
                   child: _textCerrarSesion(),
                 ),
-                Positioned(top: 37, right: 2, child: _iconBack()),
+                Positioned(top: 22, right: 2, child: _iconBack()),
                 Container(
                   width: double.infinity,
-                  margin: EdgeInsets.only(top: 80),
+                  margin: EdgeInsets.only(top: 60),
                   child: SingleChildScrollView(
                     child: Column(
                       children: [
@@ -134,11 +135,15 @@ class _AdminCotizacionesState extends State<AdminCotizaciones> {
               children: [
                 Text(
                   '${cotizacion?.id_cotizacion} ${cotizacion?.nombreServicio ?? 'SERVICIO'}',
-                  style: TextStyle(fontSize: 21),
+                  style: TextStyle(fontSize: 20),
                 ),
                 Text(
-                '${cotizacion?.nombreUsuario ?? 'USUARIO'} $fechaFormateada',
+                '${cotizacion?.nombreUsuario ?? 'USUARIO'}',
                 style: TextStyle(fontSize: 18),
+                ),
+                Text(
+                  '$fechaFormateada',
+                  style: TextStyle(fontSize: 18),
                 ),
               ],
             ),

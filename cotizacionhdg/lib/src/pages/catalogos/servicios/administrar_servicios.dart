@@ -35,7 +35,7 @@ class _AdministrarServicioxEmpresaPageState extends State<AdministrarServicioxEm
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('ADMINISTRADOR'),
+          title: Text('Menú> Catálogos> Servicios'),
         ),
         body: Container(
             width: MediaQuery.of(context).size.width * 1,
@@ -53,18 +53,18 @@ class _AdministrarServicioxEmpresaPageState extends State<AdministrarServicioxEm
                     child: _fondoOpaco()
                 ),
                 Positioned(
-                  top: 50,
+                  top: 30,
                   right: 40,
                   child: _textCerrarSesion(),
                 ),
                 Positioned(
-                    top: 37,
+                    top: 17,
                     right: 2,
                     child: _iconBack()
                 ),
                 Container(
                   width: double.infinity,
-                  margin: EdgeInsets.only(top: 110),
+                  margin: EdgeInsets.only(top: 70),
                   child: SingleChildScrollView(
                     child: Column(
                       children: [

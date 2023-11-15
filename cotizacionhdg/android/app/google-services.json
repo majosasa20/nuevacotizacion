@@ -7,12 +7,25 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:8414676023:android:b0bceb14f3d176efdaebb2",
+        "mobilesdk_app_id": "1:8414676023:android:541028ce1368d8b0daebb2",
         "android_client_info": {
-          "package_name": "com.example.anterior_cotizaciones"
+          "package_name": "com.optic.cotizaciones"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "8414676023-sudmso05uuvqvdtu96iamnudf4gk4bun.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.optic.cotizaciones",
+            "certificate_hash": "bb1e0b6d60ea1a19389b68878cc44ba386bf5ef5"
+          }
+        },
+        {
+          "client_id": "8414676023-bgu627178ct8mjlf4b52lviupue1ch4i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyAi3z1IjeSSps3tI3ug-OpXjh398-hVeks"
@@ -20,7 +33,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "8414676023-bgu627178ct8mjlf4b52lviupue1ch4i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

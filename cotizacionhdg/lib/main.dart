@@ -27,7 +27,10 @@ import 'package:cotizaciones_hdg/src/styles/estilos.dart';
 import 'package:cotizaciones_hdg/src/pages/registro/registro_pg.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+
+void main() async{
+  // await dotenv.load();
   runApp(MyApp());
 }
 

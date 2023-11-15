@@ -118,6 +118,9 @@ class _DescripcionServicioPageState extends State<DescripcionServicioPage> {
   // }
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Servicios ${_con.nombre_empresa}> ${_con.servicios?.nombre}', style: TextStyle(fontSize: 17),),
+      ),
       body: KeyboardVisibilityBuilder(
         builder: (context, isKeyboardVisible) {
           return Container(
@@ -128,14 +131,14 @@ class _DescripcionServicioPageState extends State<DescripcionServicioPage> {
                 Positioned(top: -4, bottom: -5, child: _imgFondoNube()),
                 Positioned(top: 0, bottom: 0, child: _fondoOpaco()),
                 Positioned(
-                  top: 90,
+                  top: 20,
                   right: 40,
                   child: _textCerrarSesion(),
                 ),
-                Positioned(top: 77, right: 2, child: _iconBack()),
+                Positioned(top: 7, right: 2, child: _iconBack()),
                 Container(
                   width: double.infinity,
-                  margin: EdgeInsets.only(top: 110),
+                  margin: EdgeInsets.only(top: 50),
                   child: SingleChildScrollView(
                     // Ajusta el desplazamiento según la visibilidad del teclado
                     padding: EdgeInsets.only(
@@ -343,7 +346,7 @@ class _DescripcionServicioPageState extends State<DescripcionServicioPage> {
         margin: EdgeInsets.all(8.0), // Espacio entre cada tarjeta de servicio
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage(multimedia?.multimedia ?? 'assets/img/hdg.png'),
+            image: AssetImage(multimedia.multimedia ?? 'assets/img/hdg.png'),
             fit: BoxFit.fill,
           ),
           boxShadow: [
@@ -394,9 +397,9 @@ class _DescripcionServicioPageState extends State<DescripcionServicioPage> {
                       ),
                     ),
                     DropdownButton<String>(
-                      value: selectedUbicacionOption ??
-                          _con.ubicaciones[0]?.idUbicacion.toString() ??
-                          '1',
+                      value: _con.ubicaciones.isNotEmpty
+                          ? selectedUbicacionOption ?? _con.ubicaciones[0].idUbicacion.toString()
+                          : '1',
                       onChanged: (newValue) {
                         if (newValue != null) {
                           setState(() {

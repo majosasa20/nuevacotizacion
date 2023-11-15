@@ -10,7 +10,7 @@ class VerCotizacionClienteController {
   BuildContext? context;
   Function? refresh;
   SharedPref _sharedPref = new SharedPref();
-  late dynamic idCotizacion;
+  late dynamic idCotizacion = '';
   CotizacionesProvider cotizacionesProvider = new CotizacionesProvider();
   Cotizacion? cotizaciones;
   final DateFormat dateFormat = DateFormat('dd-MM-yyyy HH:MM');
@@ -27,14 +27,18 @@ class VerCotizacionClienteController {
   TextEditingController observacionesController = new TextEditingController();
   TextEditingController empresaController = new TextEditingController();
 
-  Future? init(BuildContext context, Function refresh) async {
+  Future<void> init(BuildContext context, Function refresh) async {
     this.context = context;
     this.refresh = refresh;
+    await Future.delayed(Duration.zero);
     // empresas = Empresas.fromJson(await _sharedPref.read('empresa') ?? {});
-    idCotizacion = ModalRoute.of(context!)!.settings.arguments;
+    // idCotizacion = ModalRoute.of(context)?.settings.arguments;
+    final route = ModalRoute.of(context);
+    idCotizacion = route?.settings.arguments;
+    refresh();
 
     if (idCotizacion != null) {
-      // print('caracteristica código: $idCaracteristica');
+      print('cotización código: $idCotizacion');
       ResponseApi? responseApi =
       await cotizacionesProvider.getCotizacionById(idCotizacion);
       print('Respuesta Coti: ${responseApi?.toJson()}');
@@ -61,7 +65,7 @@ class VerCotizacionClienteController {
         }
       }
     } else {
-      MySnackbar.show(context!, 'NO SE ENCUENTRA LA EMPRESA');
+      MySnackbar.show(context!, 'NO SE ENCUENTRA LA COTIZACIÓN');
     }
     refresh();
   }

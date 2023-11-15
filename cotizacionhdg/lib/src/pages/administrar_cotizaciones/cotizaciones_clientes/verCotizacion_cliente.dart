@@ -18,15 +18,23 @@ class _VerCotizacionClienteState extends State<VerCotizacionCliente> {
   }
 
   @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
+  void didChangeDependencies() {
+    super.didChangeDependencies();
     _con.init(context, refresh);
   }
 
   @override
   Widget build(BuildContext context) {
+    // String txtAppBar = '';
+    // if (_con.cotizaciones != null) {
+    //   txtAppBar =  '${_con.cotizaciones!.nombreUsuario}';
+    // } else {
+    //   // Lógica para cuando _con.cotizaciones es nulo
+    // }
     return Scaffold(
+        appBar: AppBar(
+          title: Text('Cotizaciones Cliente> Ver Cotización', style: TextStyle(fontSize: 17),),
+        ),
         body: Container(
             width: MediaQuery.of(context).size.width * 1,
             height: double.infinity,
@@ -60,13 +68,14 @@ class _VerCotizacionClienteState extends State<VerCotizacionCliente> {
                         _textFieldDestino(),
                         _textCaracteristica(),
                         _textFieldCaracteristica(),
-                        _textObservaciones(),
-                        _textFieldFObservaciones(),
                         _textFechaServicio(),
                         _textFieldFechaServicio(),
                         _textFechaOrden(),
                         _textFieldFechaSolicitud(),
                         _textEstado(),
+                        _textFieldEstado(),
+                        _textObservaciones(),
+                        _textFieldFObservaciones(),
                         _botones(),
                         SizedBox(height: MediaQuery.of(context).size.height * 0.1),
                       ],
@@ -118,12 +127,12 @@ class _VerCotizacionClienteState extends State<VerCotizacionCliente> {
         children: [
           SizedBox(height: MediaQuery.of(context).size.height * 0.02),
           if (_con.cotizaciones?.nombre_empresa == 'SERVIAVIA')
-            Text('ORDEN COMPRA #${_con.idCotizacion}',
+            Text('ORDEN COMPRA #${_con.idCotizacion ?? 'Cliente'}',
                 style: TextStyle(
                     color: Colors.white, fontSize: 40, fontWeight: FontWeight.bold),
                 textAlign: TextAlign.center)
           else
-            Text('COTIZACIÓN #${_con.idCotizacion}',
+            Text('COTIZACIÓN #${_con.idCotizacion ?? 'Cliente'}',
                 style: TextStyle(
                     color: Colors.white, fontSize: 40, fontWeight: FontWeight.bold),
                 textAlign: TextAlign.center)
@@ -215,7 +224,7 @@ class _VerCotizacionClienteState extends State<VerCotizacionCliente> {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 50, vertical: 5),
       alignment: Alignment.centerLeft,
-      child: Text('Fecha Solicitud',
+      child: Text('Fecha Genera Solicitud',
         style: TextStyle(color: Colors.black45, fontSize: 20, fontWeight: FontWeight.bold),
       ),
     );
@@ -456,7 +465,7 @@ class _VerCotizacionClienteState extends State<VerCotizacionCliente> {
       ),
     );
   }
-  Widget _textFieldFObservaciones() {
+  Widget _textFieldFObservacionesNO() {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 50, vertical: 5),
       decoration: BoxDecoration(
@@ -474,10 +483,31 @@ class _VerCotizacionClienteState extends State<VerCotizacionCliente> {
           hintStyle: TextStyle(
               color: Colors.white60
           ),
-          // prefixIcon: Icon(
-          //     Icons.airplanemode_active_rounded,
-          //     color: Colors.white60
-          // )
+        ),
+      ),
+    );
+  }
+  Widget _textFieldFObservaciones() {
+    return Container(
+      height: 200,
+      margin: EdgeInsets.symmetric(horizontal: 50, vertical: 5),
+      decoration: BoxDecoration(
+          color: MyColors.primaryOpacityColor,
+          borderRadius: BorderRadius.circular(30)
+      ),
+      child: SingleChildScrollView(
+        child: TextField(
+          controller: _con.observacionesController,
+          enabled: false,
+          maxLines: null,
+          decoration: InputDecoration(
+            hintText: 'Observaciones',
+            border: InputBorder.none,
+            contentPadding: EdgeInsets.all(15),
+            hintStyle: TextStyle(
+                color: Colors.white60
+            ),
+          ),
         ),
       ),
     );
@@ -493,7 +523,7 @@ class _VerCotizacionClienteState extends State<VerCotizacionCliente> {
           borderRadius: BorderRadius.circular(30),
         ),
         padding: EdgeInsets.symmetric(vertical: 10),
-        minimumSize: Size(145, 0),
+        minimumSize: Size(MediaQuery.of(context).size.height * 0.28, 0),
       ),
     );
   }

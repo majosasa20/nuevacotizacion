@@ -33,7 +33,7 @@ class _AdministrarCaracteristicasxEmpresaState extends State<AdministrarCaracter
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('ADMINISTRADOR'),
+          title: Text('Menú> Catálogos> Características', style: TextStyle(fontSize: 19),),
         ),
         body: Container(
             width: MediaQuery.of(context).size.width * 1,
@@ -129,7 +129,7 @@ class _AdministrarCaracteristicasxEmpresaState extends State<AdministrarCaracter
         children: [
           Text(
               'CARACTERISTICAS',
-              style: TextStyle(color: Colors.white, fontSize: 40, fontWeight: FontWeight.bold)
+              style: TextStyle(color: Colors.white, fontSize: 35, fontWeight: FontWeight.bold)
           ), SizedBox(height: 5),
           Text(
             _con.nombre_empresa?.toString() ?? "EMPRESA",

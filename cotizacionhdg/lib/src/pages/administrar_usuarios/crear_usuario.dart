@@ -32,6 +32,9 @@ class _CrearUsuarioState extends State<CrearUsuario> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: AppBar(
+          title: Text('Usuarios Empresa > Crear Usuario', style: TextStyle(fontSize: 18),),
+        ),
         body: Container(
             width: MediaQuery.of(context).size.width * 1,
             height: double.infinity,
@@ -277,7 +280,7 @@ class _CrearUsuarioState extends State<CrearUsuario> {
           borderRadius: BorderRadius.circular(30),
         ),
         padding: EdgeInsets.symmetric(vertical: 10),
-        minimumSize: Size(250, 0),
+        minimumSize: Size(MediaQuery.of(context).size.height * 0.28, 0),
       ),
     );
   }
@@ -291,7 +294,7 @@ class _CrearUsuarioState extends State<CrearUsuario> {
           borderRadius: BorderRadius.circular(30),
         ),
         padding: EdgeInsets.symmetric(vertical: 10),
-        minimumSize: Size(250, 0),
+        minimumSize: Size(MediaQuery.of(context).size.height * 0.28, 0),
       ),
     );
   }

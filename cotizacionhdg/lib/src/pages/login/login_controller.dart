@@ -80,12 +80,19 @@ class LoginController {
       MySnackbar.show(context!, 'Ingresa la contraseña');
       return;
     }
-    // print('EMAIL: $email');
+    // print('EMAIL: $email'); 60kb  28kb
     // print('PASSWORD: $password');
+    // MySnackbar.show(context!, "antes de entrar");
     ResponseApi? responseApi = await usuariosProvider.login(email, password);
+    // MySnackbar.show(context!, "después de entrar al api");
     print('resultado: ${responseApi}');
   //
+  //   if(responseApi?.success != null){
+  //     MySnackbar.show(context!, responseApi?.success == true ? "peticion correcta" : "peticion erronea");
+  //   }
+
     if (responseApi != null && responseApi.success!) {
+      MySnackbar.show(context!, "Sesión Iniciada");
       Usuario usuario = Usuario.fromJson(responseApi.data);
       _sharedPref.save('usuario', usuario.toJson());
       print('USUARIO LOGUEADO: ${usuario.toJson()}');
@@ -110,7 +117,7 @@ class LoginController {
   //     Navigator.pushNamedAndRemoveUntil(context!, 'clientepage', (route) => false);
     }
     else {
-      MySnackbar.show(context!, responseApi?.message);
+      MySnackbar.show(context!, responseApi?.message ?? 'error al iniciar sesión');
     }
     // print('Respuesta object: ${responseApi}');
     // print('Respuesta: ${responseApi?.toJson()}');

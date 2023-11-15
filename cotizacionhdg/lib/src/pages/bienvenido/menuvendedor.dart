@@ -31,7 +31,7 @@ class _VendedorPageState extends State<VendedorPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('VENDEDOR'),
+          title: Text('MENÚ VENDEDOR'),
         ),
         body: Container(
             width: MediaQuery.of(context).size.width * 1,
@@ -49,18 +49,18 @@ class _VendedorPageState extends State<VendedorPage> {
                     child: _fondoOpaco()
                 ),
                 Positioned(
-                  top: 90,
+                  top: 30,
                   right: 40,
                   child: _textCerrarSesion(),
                 ),
                 Positioned(
-                    top: 77,
+                    top: 17,
                     right: 2,
                     child: _iconBack()
                 ),
                 Container(
                   width: double.infinity,
-                  margin: EdgeInsets.only(top: 110),
+                  margin: EdgeInsets.only(top: 40),
                   child: SingleChildScrollView(
                     child: Column(
                       children: [

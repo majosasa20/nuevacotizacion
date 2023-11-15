@@ -31,6 +31,9 @@ class _ServiciosCotizacionesPageState extends State<ServiciosCotizacionesPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: AppBar(
+          title: Text('Crear Cotización > Servicios'),
+        ),
         body: Container(
             width: MediaQuery.of(context).size.width * 1,
             height: double.infinity,
@@ -158,8 +161,8 @@ class _ServiciosCotizacionesPageState extends State<ServiciosCotizacionesPage> {
         _con.goToDescripcionServicioPage(servicios.id_servicio, _con.id_empresa, _con.nombre_empresa);
       },
       child: Container(
-        height: 140,
-        width: 189,
+        height: MediaQuery.of(context).size.height * 0.16,
+        width: MediaQuery.of(context).size.height * 0.2,
         margin: EdgeInsets.all(8.0),
         decoration: BoxDecoration(
           image: DecorationImage(

@@ -41,7 +41,20 @@ class _FormularioCotizacionPageState extends State<FormularioCotizacionPage> {
 
   @override
   Widget build(BuildContext context) {
+    String txtAppBar = '';
+    if (_con.nombre_empresa != null && _con.nombre_empresa.isNotEmpty) {
+      if (_con.nombre_empresa == 'SERVIAVIA') {
+        txtAppBar = 'Enviar Orden';
+      } else if (_con.nombre_empresa == 'Helicópteros de Guatemala') {
+        txtAppBar = 'Enviar Cotización';
+      } else {txtAppBar = ''; }
+    }
+    // refresh();
     return Scaffold(
+        appBar: AppBar(
+          //${_con.nombreServicio ?? "Sin Servicio"}
+          title: Text('Servicio ${_con.nombreServicio ?? "Sin Servicio"}> ${txtAppBar}', style: TextStyle(fontSize: 17),),
+        ),
         body: Container(
             width: MediaQuery.of(context).size.width * 1,
             height: double.infinity,
@@ -57,7 +70,7 @@ class _FormularioCotizacionPageState extends State<FormularioCotizacionPage> {
                 Positioned(top: 37, right: 2, child: _iconBack()),
                 Container(
                   width: double.infinity,
-                  margin: EdgeInsets.only(top: 110),
+                  margin: EdgeInsets.only(top: 60),
                   child: SingleChildScrollView(
                     child: Column(
                       children: [

@@ -159,7 +159,7 @@ class CrearUsuarioController
         "idEmpresa": id_empresa,
         "nombreEmpresa": nombre_empresa,
       };
-      Navigator.pushReplacementNamed(context!, 'adminCaracteristicas', arguments: parametros);
+      Navigator.pushReplacementNamed(context!, 'adminusuariosempresa', arguments: parametros);
     }
     void logout(){
       _sharedPref.logout(context!);

@@ -1,10 +1,16 @@
+<!--        android:name="${applicationName}"-->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <application
         android:label="anterior_cotizaciones"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+<!--        acá se hizo el cambio de giro de pantalla-->
+
         <activity
             android:name=".MainActivity"
+            android:screenOrientation="portrait"
             android:exported="true"
             android:launchMode="singleTop"
             android:theme="@style/LaunchTheme"

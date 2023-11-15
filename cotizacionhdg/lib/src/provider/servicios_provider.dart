@@ -5,8 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:cotizaciones_hdg/src/models/response_api.dart';
 import 'package:http/http.dart' as http;
 
+import '../styles/my_snackbar.dart';
+
 class ServiciosProvider {
-  final _url = Enviroment.API_COTIZACION;
+  final _url ="https://cotizaciones-hdg.onrender.com"; //Enviroment.API_COTIZACION;
   final _api = '/api/servicios';
   BuildContext? context;
   Future? init(BuildContext context) {
@@ -28,7 +30,7 @@ class ServiciosProvider {
       if (response.statusCode == 201) {
         final data = json.decode(response.body);
         ResponseApi responseApi = ResponseApi.fromJson(data);
-        print(responseApi);
+        print('Obteniendo datos servicios$responseApi');
         return responseApi;
       } else {
         // Puedes manejar los diferentes códigos de estado aquí
@@ -79,7 +81,7 @@ class ServiciosProvider {
       if (response.statusCode == 201) {
         final data = json.decode(response.body);
         ResponseApi responseApi = ResponseApi.fromJson(data);
-        print(responseApi);
+        // print(responseApi);
         return responseApi;
       } else {
         // Puedes manejar los diferentes códigos de estado aquí
@@ -115,6 +117,7 @@ class ServiciosProvider {
   // }
 
   Future<ResponseApi?> editarServicio(int idServicio,int idEmpresa,String nombreServicio, String descripcion,String salidaUbicacion,double precio,double duracion, String imagen,int idcaracteristica) async{
+    // print('parámetros: $idServicio, $idEmpresa, $nombreServicio,  $descripcion, $salidaUbicacion, $precio, $duracion,  $imagen, $idcaracteristica');
     try {
       final url = Uri.parse('$_url$_api/editarServicio');
       final bodyParams = json.encode({
@@ -139,6 +142,7 @@ class ServiciosProvider {
         return responseApi;
       } else {
         print('Error en la solicitud: ${response.statusCode}');
+        MySnackbar.show(context!, 'Error en la solicitud: ${response.statusCode}');
         return null;
       }
     }

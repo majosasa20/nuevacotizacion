@@ -31,7 +31,7 @@ class _CotizacionesClientesState extends State<CotizacionesClientes> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('CLIENTE'),
+          title: Text('Cliente > Cotizaciones ${_con.usuarios?.nombreUsuario ?? ""}'),
         ),
         body: Container(
             width: MediaQuery.of(context).size.width * 1,
@@ -116,7 +116,7 @@ class _CotizacionesClientesState extends State<CotizacionesClientes> {
           style: TextStyle(
               color: Colors.white, fontSize: 40, fontWeight: FontWeight.bold)),
       SizedBox(height: 5),
-      Text(_con.usuarios?.nombreUsuario ?? "USUARIO",
+      Text(_con.usuarios?.nombreUsuario ?? 'Cliente',
           style: TextStyle(
               color: Colors.white, fontSize: 35, fontWeight: FontWeight.bold))
     ]);

@@ -90,9 +90,6 @@ class ClienteController {
   void goToServiciosPrueba(){
     Navigator.pushNamed(context!, 'serviciosCotizaciones');
   }
-  void logout(){
-    _sharedPref.logout(context!);
-  }
   // void buscarEmpresas() async{
   //   int? idUsuario = usuario?.idUsuario;
   //   ResponseApi? responseApi = await empresasProvider.getEmpresaUsuario(idUsuario!);
@@ -106,7 +103,10 @@ class ClienteController {
   //   }
   // }
 
-  void goToPage(String route){
-    Navigator.pushNamedAndRemoveUntil(context!, route, (route) => false);
+  // void goToPage(String route){
+  //   Navigator.pushNamedAndRemoveUntil(context!, route, (route) => false);
+  // }
+  void logout() {
+    _sharedPref.logout(context!);
   }
 }

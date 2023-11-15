@@ -32,7 +32,16 @@ class _VerDetalleUsuarioState extends State<VerDetalleUsuario> {
 
   @override
   Widget build(BuildContext context) {
+    String txtAppBar = '';
+    if (bhabilitar == false) {
+      txtAppBar = 'Usuarios Empresa > Ver Usuario';
+    } else {
+      txtAppBar = 'Usuarios Empresa > Editar Usuario';
+    }
     return Scaffold(
+        appBar: AppBar(
+          title: Text('${txtAppBar}', style: TextStyle(fontSize: 18),),
+        ),
         body: Container(
             width: MediaQuery.of(context).size.width * 1,
             height: double.infinity,
@@ -41,14 +50,14 @@ class _VerDetalleUsuarioState extends State<VerDetalleUsuario> {
                 Positioned(top: -4, bottom: -5, child: _imgFondoNube()),
                 Positioned(top: 0, bottom: 0, child: _fondoOpaco()),
                 Positioned(
-                  top: 50,
+                  top: 30,
                   right: 40,
                   child: _textCerrarSesion(),
                 ),
-                Positioned(top: 37, right: 2, child: _iconBack()),
+                Positioned(top: 17, right: 2, child: _iconBack()),
                 Container(
                   width: double.infinity,
-                  margin: EdgeInsets.only(top: 110),
+                  margin: EdgeInsets.only(top: 70),
                   child: SingleChildScrollView(
                     child: Column(
                       children: [
@@ -69,7 +78,7 @@ class _VerDetalleUsuarioState extends State<VerDetalleUsuario> {
                                 ? [  _dropdownRol(_con.roleslist),  ]
                                 : [],
                           ),
-                        SizedBox(height: MediaQuery.of(context).size.height * 0.1),
+                        SizedBox(height: MediaQuery.of(context).size.height * 0.03),
                         _botones()
                       ],
                     ),
@@ -316,7 +325,7 @@ class _VerDetalleUsuarioState extends State<VerDetalleUsuario> {
           borderRadius: BorderRadius.circular(30),
         ),
         padding: EdgeInsets.symmetric(vertical: 10),
-        minimumSize: Size(250, 0),
+        minimumSize: Size(MediaQuery.of(context).size.height * 0.28, 0),
       ),
     );
   }
@@ -330,7 +339,7 @@ class _VerDetalleUsuarioState extends State<VerDetalleUsuario> {
           borderRadius: BorderRadius.circular(30),
         ),
         padding: EdgeInsets.symmetric(vertical: 10),
-        minimumSize: Size(250, 0),
+        minimumSize: Size(MediaQuery.of(context).size.height * 0.28, 0),
       ),
     );
   }
@@ -345,7 +354,7 @@ class _VerDetalleUsuarioState extends State<VerDetalleUsuario> {
           borderRadius: BorderRadius.circular(30),
         ),
         padding: EdgeInsets.symmetric(vertical: 10),
-        minimumSize: Size(145, 0),
+        minimumSize: Size(MediaQuery.of(context).size.height * 0.16, 0),
       ),
     );
   }
@@ -389,7 +398,7 @@ class _VerDetalleUsuarioState extends State<VerDetalleUsuario> {
           borderRadius: BorderRadius.circular(30),
         ),
         padding: EdgeInsets.symmetric(vertical: 10),
-        minimumSize: Size(145, 0),
+        minimumSize: Size(MediaQuery.of(context).size.height * 0.16, 0),
       ),
     );
   }

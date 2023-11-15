@@ -32,7 +32,7 @@ class _AdminUsuariosEmpresaState extends State<AdminUsuariosEmpresa> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('ADMINISTRADOR'),
+          title: Text('Admin.> Usuarios ${_con.nombre_empresa}'),
         ),
         body: Container(
             width: MediaQuery.of(context).size.width * 1,
@@ -50,18 +50,18 @@ class _AdminUsuariosEmpresaState extends State<AdminUsuariosEmpresa> {
                     child: _fondoOpaco()
                 ),
                 Positioned(
-                  top: 90,
+                  top: 30,
                   right: 40,
                   child: _textCerrarSesion(),
                 ),
                 Positioned(
-                    top: 77,
+                    top: 17,
                     right: 2,
                     child: _iconBack()
                 ),
                 Container(
                   width: double.infinity,
-                  margin: EdgeInsets.only(top: 110),
+                  margin: EdgeInsets.only(top: 70),
                   child: SingleChildScrollView(
                     child: Column(
                       children: [
@@ -72,7 +72,7 @@ class _AdminUsuariosEmpresaState extends State<AdminUsuariosEmpresa> {
                               ? [_buttonUsuarios(_con.usuarios)]
                               : [],
                         ),
-                        SizedBox(height: MediaQuery.of(context).size.height * 0.1),
+                        SizedBox(height: MediaQuery.of(context).size.height * 0.03),
                         _buttonCrear()
                       ],
                     ),

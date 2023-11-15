@@ -1,14 +1,15 @@
 import 'dart:convert';
+// import 'dart:js_interop';
 import 'package:cotizaciones_hdg/src/api/enviroment.dart';
 import 'package:cotizaciones_hdg/src/models/usuario.dart';
 import 'package:flutter/material.dart';
 import 'package:cotizaciones_hdg/src/models/response_api.dart';
 import 'package:http/http.dart' as http;
 
+import '../styles/my_snackbar.dart';
+
 class UsuariosProvider {
-  // final _url = 'https://cotizaciones-hdg.onrender.com'; // URL de tu servicio web
-  // final _api = '/api/usuarios'; // Ruta de la API
-  final _url = Enviroment.API_COTIZACION;
+  final _url ="https://cotizaciones-hdg.onrender.com"; //Enviroment.API_COTIZACION;
   final _api = '/api/usuarios';
   // String _host = Enviroment.headerHost;
   // String _key = Enviroment.headerKey;
@@ -43,7 +44,7 @@ class UsuariosProvider {
         'Content-Type': 'application/json',
       };
       final response = await http.post(url, headers: headers, body: bodyParams);
-
+      print(response);
       if (response.statusCode == 201) {
         final data = json.decode(response.body);
         ResponseApi responseApi = ResponseApi.fromJson(data);
@@ -89,24 +90,28 @@ class UsuariosProvider {
         'correo_usuario': email,
         'contrasenia': password,
       };
-
+      // MySnackbar.show(context!, email + password);
       final headers = {
         'Content-Type': 'application/json',
       };
       final response = await http.post(url, headers: headers, body: json.encode(bodyParams));
-
+      MySnackbar.show(context!, "${response}");
       if (response.statusCode == 201) {
         final data = json.decode(response.body);
         ResponseApi responseApi = ResponseApi.fromJson(data);
         print(responseApi);
+        // MySnackbar.show(context!, response == true ? "peticion correcta" : "peticion erronea");
         return responseApi;
       } else {
         // Puedes manejar los diferentes códigos de estado aquí
         print('Error en la solicitud: ${response.statusCode}');
+        MySnackbar.show(context!, 'Error en la solicitud: ${response.statusCode}');
+
         return null;
       }
     } catch (e) {
       print('Error: $e');
+      MySnackbar.show(context!, 'Error: ${e}');
       return null;
     }
   }

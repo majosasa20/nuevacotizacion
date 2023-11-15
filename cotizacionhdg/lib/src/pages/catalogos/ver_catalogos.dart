@@ -30,6 +30,9 @@ class _VerCatalogosPageState extends State<VerCatalogosPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: AppBar(
+          title: Text('Menú> Ver Catálogos', style: TextStyle(fontSize: 19),),
+        ),
         body: Container(
             width: MediaQuery.of(context).size.width * 1,
             height: double.infinity,
@@ -46,18 +49,18 @@ class _VerCatalogosPageState extends State<VerCatalogosPage> {
                     child: _fondoOpaco()
                 ),
                 Positioned(
-                  top: 90,
+                  top: 30,
                   right: 40,
                   child: _textCerrarSesion(),
                 ),
                 Positioned(
-                    top: 77,
+                    top: 17,
                     right: 2,
                     child: _iconBack()
                 ),
                 Container(
                   width: double.infinity,
-                  margin: EdgeInsets.only(top: 110),
+                  margin: EdgeInsets.only(top: 20),
                   child: SingleChildScrollView(
                     child: Column(
                       children: [
@@ -122,11 +125,11 @@ class _VerCatalogosPageState extends State<VerCatalogosPage> {
           SizedBox(height: MediaQuery.of(context).size.height * 0.06),
           Text(
               'Ver',
-              style: TextStyle(color: Colors.white, fontSize: 35, fontWeight: FontWeight.bold)
+              style: TextStyle(color: Colors.white, fontSize: 33, fontWeight: FontWeight.bold)
           ), SizedBox(height: 5),
           Text(
               'Catálogos',
-              style: TextStyle(color: Colors.white, fontSize: 35, fontWeight: FontWeight.bold)
+              style: TextStyle(color: Colors.white, fontSize: 33, fontWeight: FontWeight.bold)
           )
         ]);
   }

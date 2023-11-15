@@ -51,18 +51,18 @@ class _InicioAdminPageState extends State<InicioAdminPage> {
                     child: _fondoOpaco()
                 ),
                 Positioned(
-                  top: 90,
+                  top: 30,
                   right: 40,
                   child: _textCerrarSesion(),
                 ),
                 Positioned(
-                    top: 77,
+                    top: 17,
                     right: 2,
                     child: _iconExit()
                 ),
                 Container(
                   width: double.infinity,
-                  margin: EdgeInsets.only(top: 110),
+                  margin: EdgeInsets.only(top: 70),
                   child: SingleChildScrollView(
                     child: Column(
                       children: [
@@ -150,7 +150,7 @@ class _InicioAdminPageState extends State<InicioAdminPage> {
                 empresas.nombreEmpresa ?? 'EMPRESA',
                 style: TextStyle(
                     color: Colors.white,
-                    fontSize: 30,
+                    fontSize: 25,
                     fontWeight: FontWeight.bold)
             ),
           ],

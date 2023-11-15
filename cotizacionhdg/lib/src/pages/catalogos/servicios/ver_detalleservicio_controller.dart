@@ -47,11 +47,12 @@ class VerDetalleServicioController {
       // print('caracteristica código: $idCaracteristica');
       ResponseApi? responseApi =
       await serviciosProvider.getServicioById(idServicio);
-      print('Respuesta Servicios: ${responseApi?.toJson()}');
+      // print('Respuesta Servicios: ${responseApi?.toJson()}');
 
       if (responseApi != null && responseApi.success != null) {
         if (responseApi.success!) {
           servicios = Servicio.fromJson(responseApi.data!);
+          print('precio: ${servicios!.precio}');
           print('abajo se muestra el servicio: ${servicios?.toJson()}');
           if (servicios != null){
             nombreservicioController.text =  servicios!.nombre.toString();
@@ -60,7 +61,7 @@ class VerDetalleServicioController {
             imagenEncabezadoController.text = servicios!.imagenencabezado.toString();
             duracionController.text = servicios!.duracion.toString();
             empresaController.text = servicios!.nombre_empresa.toString();
-            precioController.text = servicios!.precio.toString();
+            precioController.text = servicios!.precio.toString() ?? '0.00';
             if (servicios!.caracteristicas.isNotEmpty) {
               String? primerNombreCaracteristica = servicios!.caracteristicas[0].descripcion;
               caracteristicaController.text = primerNombreCaracteristica!;
@@ -120,6 +121,7 @@ class VerDetalleServicioController {
   }
 
   Future<void> guardarServicio(idcaracteristica) async {
+    print('Se va a guardar');
     // int idEstado = int.parse(idEstadoCotizacion);
     String? nombreServicio = nombreservicioController.text.trim();
     String? descripcion = descricionController.text.trim();
@@ -128,15 +130,20 @@ class VerDetalleServicioController {
     double duracion =double.parse(duracionController.text);
     String? imagen = imagenEncabezadoController.text.trim();
 
-    ResponseApi? responseApinew = await serviciosProvider.editarServicio(idServicio, id_empresa!, nombreServicio, descripcion, salidaUbicacion, precio, duracion,imagen, idcaracteristica);
+    ResponseApi? responseApinew = await serviciosProvider.editarServicio(idServicio, id_empresa, nombreServicio, descripcion, salidaUbicacion, precio, duracion,imagen, idcaracteristica);
     print('Cambio Servicio: ${responseApinew?.toJson()}');
-    if (responseApinew!.success!) {
-      Future.delayed(Duration(seconds: 3), () {
-        Navigator.pushReplacementNamed(context!, 'adminserviciosxempresa');
-      });
-      MySnackbar.show(context!, responseApinew.message);
-    } else {
-      MySnackbar.show(context!, "Error al modificar el servicio.");
+    if (responseApinew != null && responseApinew.success != null) {
+      bool success= responseApinew.success!;
+      if (success) {
+        Future.delayed(Duration(seconds: 3), () {
+          Navigator.pushReplacementNamed(context!, 'adminserviciosxempresa');
+        });
+        MySnackbar.show(context!, responseApinew.message);
+      } else {
+        MySnackbar.show(context!, "Error al modificar el servicio.");
+      }
+    }else{
+
     }
   }
 

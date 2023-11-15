@@ -5,7 +5,7 @@ import 'package:cotizaciones_hdg/src/models/response_api.dart';
 import 'package:http/http.dart' as http;
 
 class UbicacionesProvider {
-  final _url = Enviroment.API_COTIZACION;
+  final _url ="https://cotizaciones-hdg.onrender.com"; //Enviroment.API_COTIZACION;
   final _api = '/api/ubicaciones';
 
   BuildContext? context;

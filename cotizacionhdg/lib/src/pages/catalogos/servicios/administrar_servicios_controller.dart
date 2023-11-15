@@ -1,4 +1,4 @@
-import 'package:cotizaciones_hdg/src/models/servicios_model.dart';
+ import 'package:cotizaciones_hdg/src/models/servicios_model.dart';
 import 'package:cotizaciones_hdg/src/provider/servicios_provider.dart';
 import 'package:flutter/material.dart';
 import '../../../models/empresas_model.dart';
@@ -38,7 +38,7 @@ class AdministrarServiciosxEmpresaController{
     if (id_empresa != null) {
       print('empresa código: $id_empresa');
       ResponseApi? responseApi = await serviciosProvider.getServicioEmpresa(id_empresa!);
-      print('Respuesta: ${responseApi?.toJson()}');
+      // print('Respuesta: ${responseApi?.toJson()}');
 
       if (responseApi != null && responseApi.success != null) {
         if (responseApi.success!) {

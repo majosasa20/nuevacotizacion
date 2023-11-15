@@ -30,38 +30,36 @@ class _ClientePageState extends State<ClientePage> {
 
   @override
   Widget build(BuildContext context) {
+    String txtAppBar = '';
+    if (_con.usuario?.roles != null && _con.usuario!.roles.isNotEmpty) {
+      if (_con.usuario!.roles[0].idRol == 1) {
+        txtAppBar = 'Cliente > Crear Cotización';
+      } else if (_con.usuario!.roles[0].idRol == 2 || _con.usuario!.roles[0].idRol == 3) {
+        txtAppBar = 'Administrador > Crear Cotización';
+      } else if (_con.usuario!.roles[0].idRol == 4 || _con.usuario!.roles[0].idRol == 5) {
+        txtAppBar = 'Vendedor > Crear Cotización';
+      }
+    }
     return Scaffold(
       appBar: AppBar(
-        title: Text('CLIENTE'),
+        title: Text('${txtAppBar}'),
       ),
         body: Container(
             width: MediaQuery.of(context).size.width * 1,
             height: double.infinity,
             child: Stack(
               children: [
+                Positioned(top: -4, bottom: -5, child: _imgFondoNube()),
+                Positioned(top: 0, bottom: 0, child: _fondoOpaco()),
                 Positioned(
-                    top: -4,
-                    bottom: -5,
-                    child: _imgFondoNube()
-                ),
-                Positioned(
-                    top: 0,
-                    bottom: 0,
-                    child: _fondoOpaco()
-                ),
-                Positioned(
-                  top: 70,
+                  top: 35,
                   right: 40,
                   child: _textCerrarSesion(),
                 ),
-                Positioned(
-                    top: 57,
-                    right: 2,
-                    child: _iconBack()
-                ),
+                Positioned(top: 22, right: 2, child: _iconBack()),
                 Container(
                   width: double.infinity,
-                  margin: EdgeInsets.only(top: 60),
+                  margin: EdgeInsets.only(top: 20),
                   child: SingleChildScrollView(
                     child: Column(
                         children: [
@@ -94,9 +92,9 @@ class _ClientePageState extends State<ClientePage> {
                               //   )
                               // ]
                                   : [
-                                    _textselectEmpresas(),
-                                SizedBox(height: MediaQuery.of(context).size.height * 0.02),
-                                _imageHdg(),
+                                //     _textselectEmpresas(),
+                                // SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+                                // _imageHdg(),
                               ],
                           )
                         ]
@@ -217,7 +215,7 @@ class _ClientePageState extends State<ClientePage> {
               empresas.nombreEmpresa ?? 'EMPRESA',
               style: TextStyle(
                   color: Colors.white,
-                  fontSize: 30,
+                  fontSize: 25,
                   fontWeight: FontWeight.bold)
             ),
           ],

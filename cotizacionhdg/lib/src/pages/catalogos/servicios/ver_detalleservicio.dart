@@ -31,7 +31,16 @@ class _VerDetalleServicioPageState extends State<VerDetalleServicioPage> {
 
   @override
   Widget build(BuildContext context) {
+    String txtAppBar = '';
+    if (bhabilitar == false){
+      txtAppBar = 'Servicios> Ver Servicio';
+    } else {
+      txtAppBar = 'Servicios> Editar Servicio';
+    }
     return Scaffold(
+        appBar: AppBar(
+          title: Text('${txtAppBar}', style: TextStyle(fontSize: 19),),
+        ),
         body: Container(
             width: MediaQuery.of(context).size.width * 1,
             height: double.infinity,
@@ -40,19 +49,19 @@ class _VerDetalleServicioPageState extends State<VerDetalleServicioPage> {
                 Positioned(top: -4, bottom: -5, child: _imgFondoNube()),
                 Positioned(top: 0, bottom: 0, child: _fondoOpaco()),
                 Positioned(
-                  top: 50,
+                  top: 30,
                   right: 40,
                   child: _textCerrarSesion(),
                 ),
-                Positioned(top: 37, right: 2, child: _iconBack()),
+                Positioned(top: 17, right: 2, child: _iconBack()),
                 Container(
                   width: double.infinity,
-                  margin: EdgeInsets.only(top: 110),
+                  margin: EdgeInsets.only(top: 60),
                   child: SingleChildScrollView(
                     child: Column(
                       children: [
                         _textBienvenido(),
-                        SizedBox(height: MediaQuery.of(context).size.height * 0.04),
+                        SizedBox(height: MediaQuery.of(context).size.height * 0.02),
                         _textNombre(),
                         _textFieldNombre(),
                         _textSalidaUbicacion(),
@@ -76,7 +85,7 @@ class _VerDetalleServicioPageState extends State<VerDetalleServicioPage> {
                                 ? [  _dropdownCaracteristica(_con.caracteristicastlist),  ]
                                 : [],
                           ),
-                        SizedBox(height: MediaQuery.of(context).size.height * 0.1),
+                        SizedBox(height: MediaQuery.of(context).size.height * 0.002),
                         _botones()
                       ],
                     ),
@@ -457,7 +466,7 @@ class _VerDetalleServicioPageState extends State<VerDetalleServicioPage> {
           borderRadius: BorderRadius.circular(30),
         ),
         padding: EdgeInsets.symmetric(vertical: 10),
-        minimumSize: Size(250, 0),
+        minimumSize: Size(MediaQuery.of(context).size.height * 0.28, 0),
       ),
     );
   }
@@ -471,7 +480,7 @@ class _VerDetalleServicioPageState extends State<VerDetalleServicioPage> {
           borderRadius: BorderRadius.circular(30),
         ),
         padding: EdgeInsets.symmetric(vertical: 10),
-        minimumSize: Size(250, 0),
+        minimumSize: Size(MediaQuery.of(context).size.height * 0.28, 0),
       ),
     );
   }
@@ -486,7 +495,7 @@ class _VerDetalleServicioPageState extends State<VerDetalleServicioPage> {
           borderRadius: BorderRadius.circular(30),
         ),
         padding: EdgeInsets.symmetric(vertical: 10),
-        minimumSize: Size(145, 0),
+        minimumSize: Size(MediaQuery.of(context).size.height * 0.16, 0),
       ),
     );
   }
@@ -507,7 +516,7 @@ class _VerDetalleServicioPageState extends State<VerDetalleServicioPage> {
               ],
             )
           else
-            Column( // Envolver los botones en un Row
+            Column(
               children: [
                 _buttonGuardar(),
                 // SizedBox(height: MediaQuery.of(context).size.height * 0.04),
@@ -530,7 +539,7 @@ class _VerDetalleServicioPageState extends State<VerDetalleServicioPage> {
           borderRadius: BorderRadius.circular(30),
         ),
         padding: EdgeInsets.symmetric(vertical: 10),
-        minimumSize: Size(145, 0),
+        minimumSize: Size(MediaQuery.of(context).size.height * 0.16, 0),
       ),
     );
   }
@@ -572,7 +581,7 @@ class _VerDetalleServicioPageState extends State<VerDetalleServicioPage> {
         return AlertDialog(
           title: Text('Eliminar Servicio'),
           backgroundColor: MyColors.fondoColorOpacity,
-          content: Text('¿Desea eliminar el usuario: ${_con.nombreservicioController.text}?'),
+          content: Text('¿Desea eliminar el servicio: ${_con.nombreservicioController.text}?'),
           actions: <Widget>[
             TextButton(
               child: Text('No', style: TextStyle(color: Colors.white),),

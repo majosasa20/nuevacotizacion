@@ -42,10 +42,10 @@ class Servicio{
     descripcion: json["descripcion"],
     cod_empresa: json["cod_empresa"],
     duracion: json["duracion"],
+    precio: (json["precio"] is num) ? json["precio"].toDouble() : 0.00,
     nombre_empresa: json["nombre_empresa"],
     salida_ubicacion: json["salida_ubicacion"],
     imagenencabezado: json["imagenencabezado"],
-    precio: json["precio"],
     caracteristicas: json["caracteristicas"] is List
         ? (json["caracteristicas"] as List<dynamic>)
         .map((x) => Caracteristicas.fromJson(x))
@@ -66,11 +66,11 @@ class Servicio{
     "descripcion": descripcion,
     "cod_empresa": cod_empresa,
     "duracion": duracion,
+    'precio': precio,
     "salida_ubicacion": salida_ubicacion,
     "imagenencabezado": imagenencabezado,
     "caracteristicas": caracteristicas.map((caracteristica) => caracteristica.toJson()).toList(),
     "multimedia": multimedia.map((multimedia) => multimedia.toJson()).toList(),
-    'nombre_empresa': nombre_empresa,
-    'precio': precio
+    'nombre_empresa': nombre_empresa
   };
 }

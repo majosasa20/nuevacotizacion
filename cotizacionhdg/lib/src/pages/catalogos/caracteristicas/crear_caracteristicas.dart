@@ -35,6 +35,9 @@ class _CrearCaracteristicaState extends State<CrearCaracteristica> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: AppBar(
+          title: Text('Características> Crear Característica', style: TextStyle(fontSize: 18),),
+        ),
         body: Container(
             width: MediaQuery.of(context).size.width * 1,
             height: double.infinity,
@@ -43,14 +46,14 @@ class _CrearCaracteristicaState extends State<CrearCaracteristica> {
                 Positioned(top: -4, bottom: -5, child: _imgFondoNube()),
                 Positioned(top: 0, bottom: 0, child: _fondoOpaco()),
                 Positioned(
-                  top: 50,
+                  top: 30,
                   right: 40,
                   child: _textCerrarSesion(),
                 ),
-                Positioned(top: 37, right: 2, child: _iconBack()),
+                Positioned(top: 17, right: 2, child: _iconBack()),
                 Container(
                   width: double.infinity,
-                  margin: EdgeInsets.only(top: 110),
+                  margin: EdgeInsets.only(top: 60),
                   child: SingleChildScrollView(
                     child: Column(
                       children: [
@@ -68,7 +71,7 @@ class _CrearCaracteristicaState extends State<CrearCaracteristica> {
                               ? [  _dropdownMedida(_con.medidas),  ]
                               : [],
                         ),
-                        SizedBox(height: MediaQuery.of(context).size.height * 0.1),
+                        SizedBox(height: MediaQuery.of(context).size.height * 0.02),
                         _buttonGuardar(),
                         SizedBox(width: MediaQuery.of(context).size.width * 0.04),
                         _buttonCancelar()
@@ -279,7 +282,7 @@ class _CrearCaracteristicaState extends State<CrearCaracteristica> {
           borderRadius: BorderRadius.circular(30),
         ),
         padding: EdgeInsets.symmetric(vertical: 10),
-        minimumSize: Size(250, 0),
+        minimumSize: Size(MediaQuery.of(context).size.height * 0.28, 0),
       ),
     );
   }
@@ -293,7 +296,7 @@ class _CrearCaracteristicaState extends State<CrearCaracteristica> {
           borderRadius: BorderRadius.circular(30),
         ),
         padding: EdgeInsets.symmetric(vertical: 10),
-        minimumSize: Size(250, 0),
+        minimumSize: Size(MediaQuery.of(context).size.height * 0.28, 0),
       ),
     );
   }
